@@ -1,0 +1,26 @@
+.categories {
+  @apply gap-6 grid grid-cols-2;
+  .card {
+    @apply shadow-xl transition-all duration-300;
+    &:hover {
+      transform: scale(0.9);
+      .description {
+        @apply text-zinc-800 bg-white;
+      }
+    }
+    .thumb {
+      .image {
+        @apply w-full h-full object-cover;
+      }
+    }
+    .description {
+      @apply pt-8 pb-10 px-6 text-white bg-zinc-800 transition-all duration-300;
+      h5 {
+        @apply mb-2 text-xl uppercase;
+      }
+      p {
+        @apply text-base;
+      }
+    }
+  }
+}

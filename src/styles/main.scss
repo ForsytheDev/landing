@@ -1,0 +1,558 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap');
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  color: #151515;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: 'Rubik', sans-serif;
+}
+
+#__next {
+  height: 100%;
+}
+
+.image {
+  @apply w-full h-full object-cover;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 30px;
+  max-width: 1320px;
+  overflow: hidden;
+}
+
+.menu {
+  @apply inset-0 h-full z-30 invisible fixed overflow-hidden
+  transition-all duration-200;
+  &.opened {
+    @apply visible;
+    nav {
+      @apply translate-y-0;
+    }
+  }
+  nav {
+    @apply inset-0 h-[21rem] z-10 flex flex-col -translate-y-full rounded-b-3xl bg-white absolute
+    transition-all duration-300;
+    .list {
+      @apply mt-auto mb-4 px-10 pb-14 gap-4 flex flex-col items-center;
+      .item {
+        @apply text-lg font-bold text-zinc-900 uppercase
+        transition-all duration-200 hover:text-red-500;
+      }
+    }
+    .closer {
+      @apply bottom-3 text-4xl self-center absolute;
+    }
+  }
+  .overlay {
+    content: '';
+    @apply inset-0 z-0 absolute;
+    background-color: rgba(#000000, 0.3);
+  }
+}
+.anchor {
+  @apply bottom-10 right-10 p-2 z-50 bg-white rounded-3xl shadow-lg fixed
+  transition-all duration-200;
+}
+
+.header {
+  @apply w-full top-0 py-4 z-50 absolute transition-all duration-200;
+  &.sticky {
+    @apply bg-red-500 fixed;
+    .inner {
+      @apply h-12 text-white;
+      .logotype {
+        @apply text-white hover:text-zinc-100;
+      }
+      .list {
+        .item {
+          @apply hover:text-zinc-100;
+        }
+      }
+    }
+  }
+  .inner {
+    @apply w-full h-24 flex items-center justify-between text-white font-bold;
+    .logotype {
+      font-family: 'Syne', sans-serif;
+      @apply mr-16 text-red-500 text-3xl font-extrabold uppercase
+      transition-colors duration-200;
+      &:hover {
+        @apply text-red-500;
+      }
+    }
+    .list {
+      @apply gap-10 flex items-center;
+      .item {
+        @apply flex items-center uppercase
+        transition-colors duration-200;
+        &:hover {
+          @apply text-red-500;
+        }
+      }
+    }
+    .more {
+      @apply hidden;
+      & > * {
+        @apply text-white text-3xl;
+      }
+    }
+  }
+}
+.footer {
+  @apply text-white bg-zinc-900;
+  .inner {
+    @apply w-full h-fit px-12 py-16 flex items-center justify-around;
+    .synopsis {
+      @apply max-w-96 mt-12 flex flex-col;
+      .logotype {
+        @apply mb-4 text-3xl font-bold uppercase;
+      }
+      .description {
+        @apply mb-5 text-lg italic;
+      }
+    }
+    .categories {
+      @apply gap-12 flex justify-around;
+      .section {
+        @apply max-w-64 mt-12 flex flex-col;
+        .head {
+          @apply mb-8 pb-2.5 text-xl font-semibold uppercase relative;
+          &::after {
+            content: '';
+            @apply w-12 h-0.5 left-0 top-full bg-red-400 absolute;
+          }
+        }
+        .list {
+          @apply gap-2 flex flex-col;
+          li {
+            @apply flex items-center;
+            .item {
+              @apply gap-1.5 flex items-center text-lg transition-colors duration-200;
+              &:hover {
+                @apply text-red-400;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.main {
+  @apply grow;
+  .section {
+    @apply py-32 bg-cover bg-center bg-no-repeat overflow-hidden relative;
+    &.mask::before {
+      inset: 0;
+      z-index: 10;
+      content: '';
+      position: absolute;
+      background: rgba(4, 2, 1, 0.65);
+    }
+    .inner {
+      @apply gap-x-6 gap-y-10 grid grid-cols-2 items-start;
+      .item {
+        @apply w-full;
+      }
+    }
+    .head {
+      @apply mb-12;
+    }
+    .subtitle {
+      @apply mb-2 text-red-300 text-2xl uppercase;
+    }
+    .title {
+      @apply mb-4 text-5xl font-bold uppercase;
+    }
+  }
+  .hero {
+    @apply py-52;
+    background-image: url('https://nextgenerationdev.com/demos/html/diana/diana/assets/images/banner/babber-two.png');
+    .head {
+      @apply w-full px-3 text-white;
+      .wrapper {
+        @apply max-w-[38rem] flex flex-col items-center text-center;
+        .caption {
+          @apply mb-4 text-3xl font-medium uppercase;
+        }
+        .slogan {
+          @apply mb-8 text-7xl font-medium uppercase;
+        }
+        .link {
+          @apply w-fit px-6 py-3 gap-1.5 flex items-center justify-between text-white uppercase bg-blue-400 rounded-md
+          transition-colors duration-200;
+          &:hover {
+            @apply bg-blue-500;
+          }
+        }
+      }
+    }
+  }
+  .about {
+    @apply text-white bg-zinc-900;
+    .inner {
+      @apply grid grid-cols-2 items-center;
+      .item {
+        @apply w-full px-3;
+        .thumb {
+          @apply w-full relative;
+          .image {
+            @apply w-full h-full align-middle;
+          }
+          .mark {
+            @apply w-full px-5 py-2 left-0 bottom-0 flex items-center justify-between bg-red-500 absolute;
+            .address {
+              @apply text-lg;
+            }
+          }
+        }
+        .content {
+          @apply flex flex-col;
+          .subtitle {
+            @apply mb-3 text-red-300 text-2xl uppercase;
+          }
+          .title {
+            @apply mb-5 text-5xl capitalize;
+          }
+          .description {
+            @apply mb-5 text-lg;
+          }
+          .tags {
+            @apply mb-8 gap-3 flex;
+          }
+          .link {
+            @apply w-fit px-8 py-3 inline-flex border-2 border-dashed border-red-300 text-red-300 text-lg font-semibold capitalize rounded-lg hover:border-red-400 hover:text-red-400 transition-colors duration-200;
+          }
+        }
+      }
+    }
+  }
+  .services {
+    .categories {
+      @apply gap-6 grid grid-cols-2;
+      .card {
+        @apply shadow-xl transition-all duration-300;
+        &:hover {
+          transform: scale(0.9);
+          .description {
+            @apply text-zinc-800 bg-white;
+          }
+        }
+        .thumb {
+          .image {
+            @apply w-full h-full object-cover;
+          }
+        }
+        .description {
+          @apply pt-8 pb-10 px-6 text-white bg-zinc-800 transition-all duration-300;
+          h5 {
+            @apply mb-2 text-xl uppercase;
+          }
+          p {
+            @apply text-base;
+          }
+        }
+      }
+    }
+  }
+  .masters {
+    .thumb {
+      @apply max-w-[30rem] max-h-[40rem] relative rounded-2xl overflow-hidden;
+      .link {
+        @apply opacity-0 scale-0 z-20 inset-0 flex items-center justify-center text-white text-xl font-semibold uppercase absolute
+        transition-all duration-300;
+      }
+      &::after {
+        @apply transition-all duration-300;
+        inset: 0;
+        z-index: 10;
+        content: '';
+        position: absolute;
+      }
+      &:hover {
+        .link {
+          @apply opacity-100 scale-100;
+        }
+        &::after {
+          background: rgba(0, 0, 0, 0.45);
+        }
+      }
+    }
+    .categories {
+      @apply mb-6 gap-5 flex self-center;
+      span {
+        @apply px-3 py-2 text-center border-2 border-zinc-300 rounded-xl;
+      }
+    }
+    .description {
+      @apply mb-8 leading-8 text-center text-lg;
+    }
+    .experience {
+      @apply mb-8 self-center text-red-400 text-xl font-semibold;
+    }
+    .action {
+      @apply w-fit px-6 py-4 inline-flex self-center text-white font-normal uppercase bg-blue-400;
+    }
+  }
+  .portfolio {
+    @apply bg-zinc-900;
+    .group {
+      @apply mb-10 gap-3 flex overflow-auto whitespace-nowrap;
+      .category {
+        @apply px-6 py-3 bg-zinc-100;
+        &.checked {
+          @apply text-white bg-red-500;
+        }
+      }
+    }
+    .collection {
+      @apply gap-4 grid grid-cols-3;
+      .item {
+        @apply shadow-lg relative overflow-hidden;
+        .link {
+          @apply opacity-0 scale-0 z-20 inset-0 flex items-center justify-center text-white text-2xl font-semibold uppercase absolute
+          transition-all duration-300;
+        }
+        &::after {
+          @apply transition-all duration-300;
+          inset: 0;
+          z-index: 10;
+          content: '';
+          position: absolute;
+        }
+        &:hover {
+          .link {
+            @apply opacity-100 scale-100;
+          }
+          &::after {
+            background: rgba(4, 2, 1, 0.5);
+          }
+        }
+      }
+    }
+  }
+  .becauses {
+    .points {
+      @apply gap-7 grid grid-cols-2 justify-between;
+      .item {
+        @apply gap-5 flex items-center;
+        .description {
+          @apply mb-2;
+          h5 {
+            @apply mb-2 ml-2 text-red-500 text-2xl font-semibold uppercase;
+          }
+          p {
+            @apply text-base;
+          }
+        }
+      }
+    }
+  }
+  .socials {
+    background-attachment: fixed;
+    background-image: url('/reference-2.jpg');
+    .group {
+      @apply flex items-center justify-center;
+      .list {
+        @apply gap-10 inline-flex justify-center;
+        .item {
+          @apply px-4 py-2 flex items-center text-zinc-800 bg-white text-2xl rounded-xl;
+          .icon {
+            @apply w-auto h-8 mr-1.5 text-red-400;
+          }
+        }
+      }
+    }
+  }
+  .feedback {
+    background-image: url('https://nextgenerationdev.com/demos/html/diana/diana/assets/images/testimonial/bg1.jpg');
+    .comments {
+      @apply flex items-center justify-center relative;
+    }
+    .widget {
+      @apply w-[38rem] h-[42rem] justify-self-center rounded-xl overflow-hidden;
+    }
+  }
+  .faq {
+    .accordion {
+      @apply gap-4 flex flex-col;
+      .tab {
+        @apply rounded-xl shadow-lg overflow-hidden transition-all duration-200;
+        &.opened {
+          .wrapper {
+            @apply max-h-fit opacity-100 relative;
+          }
+        }
+        h2 {
+          @apply text-zinc-800 border border-dashed border-red-500;
+          .action {
+            @apply w-full p-3 pl-5 gap-2.5 flex items-center text-2xl font-normal uppercase relative;
+          }
+        }
+        .wrapper {
+          @apply max-h-0 opacity-0 text-white bg-zinc-800 transition-all duration-200 absolute overflow-hidden;
+          .description {
+            @apply px-8 py-5 text-justify;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1080px) {
+  .header {
+    &.sticky {
+      .inner {
+        @apply h-12;
+      }
+    }
+    .inner {
+      @apply h-16;
+      nav {
+        @apply hidden;
+      }
+      .more {
+        @apply block;
+      }
+    }
+  }
+  .footer {
+    .inner {
+      @apply flex flex-col;
+      .container {
+        .categories {
+          @apply flex flex-col;
+        }
+      }
+    }
+  }
+  .main {
+    .about {
+      .inner {
+        @apply flex flex-col;
+        .item {
+          .content {
+            @apply text-center;
+            .title {
+              @apply text-4xl;
+            }
+            .description {
+              @apply text-base;
+            }
+          }
+        }
+        .tags {
+          @apply self-center;
+        }
+        .link {
+          @apply self-center;
+        }
+      }
+    }
+    .masters {
+      .inner {
+        @apply flex flex-col;
+      }
+    }
+    .faq {
+      .inner {
+        @apply flex flex-col;
+      }
+    }
+  }
+}
+@media (max-width: 720px) {
+  .anchor {
+    @apply bottom-6 right-6;
+  }
+  .footer {
+    .inner {
+      @apply items-start;
+      .categories {
+        @apply gap-2 flex flex-col;
+      }
+    }
+  }
+  .main {
+    .section {
+      .title {
+        @apply text-4xl;
+      }
+    }
+    .portfolio {
+      .collection {
+        @apply grid-cols-2;
+      }
+    }
+    .rent {
+      .inner {
+        @apply flex flex-col;
+      }
+    }
+  }
+}
+@media (max-width: 570px) {
+  .main {
+    .services {
+      .categories {
+        @apply grid-cols-1;
+      }
+    }
+    .becauses {
+      .points {
+        .item {
+          @apply text-center flex flex-col;
+        }
+      }
+    }
+    .socials {
+      .group {
+        .list {
+          @apply flex flex-col items-center;
+          .item {
+            @apply w-fit;
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 430px) {
+  .footer {
+    .inner {
+      @apply px-4 pt-6;
+    }
+  }
+  .main {
+    .masters {
+      .categories {
+        @apply gap-2.5 flex flex-col;
+      }
+    }
+    .portfolio {
+      .collection {
+        @apply grid-cols-1;
+      }
+    }
+    .becauses {
+      .points {
+        @apply grid-cols-1;
+      }
+    }
+  }
+}
